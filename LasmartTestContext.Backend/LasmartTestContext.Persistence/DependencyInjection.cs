@@ -18,7 +18,7 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistence(this IServiceCollection serviceCollection, string connectionString)
     {
         serviceCollection.AddDbContext<DBContext>(options => options.UseInMemoryDatabase(connectionString));
-        serviceCollection.AddSingleton<IDBContext>(provider => provider.GetService<DBContext>()!);
+        serviceCollection.AddScoped<IDBContext>(provider => provider.GetService<DBContext>()!);
 
         return serviceCollection;
     }

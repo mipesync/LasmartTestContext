@@ -7,5 +7,5 @@ public class PointLookupDto : Point
     /// <summary>
     /// Список комментариев точки
     /// </summary>
-    public new List<CommentLookupDto>? Comments { get; set; }
+    public new List<CommentLookupDto> Comments { get; set; } = new();
 }

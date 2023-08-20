@@ -10,24 +10,24 @@ namespace LasmartTestContext.Application.Interfaces.Repositories;
 public interface IPointRepository
 {
     /// <summary>
-    /// Получить список точек с комментариями
+    /// Асинхронное получение списка точек
     /// </summary>
     /// <returns></returns>
-    Task<GetAllPointsResponseDto> GetAll();
+    Task<GetAllPointsResponseDto> GetAllAsync();
     /// <summary>
-    /// Ассинхронное добавление новой точки
+    /// Асинхронное добавление новой точки
     /// </summary>
     /// <param name="dto">Входные данные</param>
     /// <returns><see cref="AddPointResponseDto"/></returns>
     Task<AddPointResponseDto> AddAsync(AddPointDto dto);
     /// <summary>
-    /// Ассинхронное изменение свойств точки
+    /// Асинхронное изменение свойств точки
     /// </summary>
     /// <param name="dto">Входные данные</param>
     /// <returns></returns>
     Task EditAsync(EditPointDto dto);
     /// <summary>
-    /// Ассинхронное удаление точки
+    /// Асинхронное удаление точки
     /// </summary>
     /// <param name="pointId">Идентификатор удаляемой точки</param>
     Task RemoveAsync(int pointId);

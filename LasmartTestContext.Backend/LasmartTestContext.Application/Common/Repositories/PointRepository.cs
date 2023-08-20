@@ -24,7 +24,7 @@ public class PointRepository : IPointRepository
         _mapper = mapper;
     }
 
-    public async Task<GetAllPointsResponseDto> GetAll()
+    public async Task<GetAllPointsResponseDto> GetAllAsync()
     {
         var points = await _dbContext.Points
             .AsNoTracking()
@@ -73,18 +73,24 @@ public class PointRepository : IPointRepository
         await _dbContext.SaveChangesAsync(CancellationToken.None);
     }
 
-    private GetAllPointsResponseDto PointsToResponseDto(IEnumerable<Point> points)
+    private GetAllPointsResponseDto PointsToResponseDto(List<Point>? points)
     {
         var result = new GetAllPointsResponseDto();
-        
-        foreach (var mappedPoint in points.Select(point => _mapper.Map<PointLookupDto>(point)))
+
+        if (points != null)
         {
-            foreach (var mappedPointComment in mappedPoint.Comments)
+            foreach (var mappedPoint in points.Select(point => _mapper.Map<PointLookupDto>(point)))
             {
-                mappedPoint.Comments.Add(_mapper.Map<CommentLookupDto>(mappedPointComment));
+                if (mappedPoint.Comments.Count() != 0)
+                {
+                    foreach (var mappedPointComment in mappedPoint.Comments)
+                    {
+                        mappedPoint.Comments.Add(_mapper.Map<CommentLookupDto>(mappedPointComment));
+                    }
+                }
+                
+                result.Points!.Add(mappedPoint);
             }
-            
-            result.Points.Add(mappedPoint);
         }
 
         return result;

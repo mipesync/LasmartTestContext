@@ -5,5 +5,5 @@
 /// </summary>
 public class GetAllPointsResponseDto
 {
-    public List<PointLookupDto>? Points { get; }
+    public List<PointLookupDto> Points { get; } = new();
 }
