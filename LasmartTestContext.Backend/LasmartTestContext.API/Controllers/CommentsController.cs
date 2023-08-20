@@ -1,5 +1,7 @@
 ﻿using LasmartTestContext.API.Models;
 using LasmartTestContext.Application.Interfaces.Repositories;
+using LasmartTestContext.Dto.CommentDto;
+using LasmartTestContext.Dto.CommentDto.ResponseDto;
 using LasmartTestContext.Dto.PointDto;
 using LasmartTestContext.Dto.PointDto.ResponseDto;
 using Microsoft.AspNetCore.Mvc;
@@ -8,85 +10,69 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace LasmartTestContext.API.Controllers;
 
 /// <summary>
-/// Контроллер точек
+/// Контроллер комментариев
 /// </summary>
 [ApiController]
-[Route("products")]
+[Route("comments")]
 [Produces("application/json")]
-public class PointsController : Controller
+public class CommentsController : Controller
 {
-    private readonly IPointRepository _pointRepository;
+    private readonly ICommentRepository _commentRepository;
 
-    public PointsController(IPointRepository pointRepository)
+    public CommentsController(ICommentRepository commentRepository)
     {
-        _pointRepository = pointRepository;
+        _commentRepository = commentRepository;
     }
 
     /// <summary>
-    /// Получить все точки
-    /// </summary>
-    /// <returns><see cref="GetAllPointsResponseDto"/></returns>
-    /// <response code="200">Запрос выполнен успешно</response>
-    /// <response code="500">Внутренняя ошибка сервера</response>
-    [HttpGet]
-    [SwaggerResponse(statusCode: StatusCodes.Status200OK, type: typeof(GetAllPointsResponseDto))]
-    [SwaggerResponse(statusCode: StatusCodes.Status500InternalServerError, type: typeof(ErrorModel))]
-    public async Task<IActionResult> GetAllAsync()
-    {
-        var result = await _pointRepository.GetAllAsync();
-
-        return Ok(result);
-    }
-
-    /// <summary>
-    /// Добавить новую точку
+    /// Добавить новый комментарий
     /// </summary>
     /// <param name="dto">Входные данные</param>
-    /// <returns><see cref="AddPointResponseDto"/></returns>
+    /// <returns><see cref="AddCommentResponseDto"/></returns>
     /// <response code="200">Запрос выполнен успешно</response>
     /// <response code="500">Внутренняя ошибка сервера</response>
     [HttpPost]
-    [SwaggerResponse(statusCode: StatusCodes.Status200OK, type: typeof(AddPointResponseDto))]
+    [SwaggerResponse(statusCode: StatusCodes.Status200OK, type: typeof(AddCommentResponseDto))]
     [SwaggerResponse(statusCode: StatusCodes.Status500InternalServerError, type: typeof(ErrorModel))]
-    public async Task<IActionResult> AddAsync([FromBody] AddPointDto dto)
+    public async Task<IActionResult> AddAsync([FromBody] AddCommentDto dto)
     {
-        var result = await _pointRepository.AddAsync(dto);
+        var result = await _commentRepository.AddCommentAsync(dto);
 
         return Ok(result);
     }
 
     /// <summary>
-    /// Изменить свойства точки
+    /// Изменить свойства комментария
     /// </summary>
     /// <param name="dto">Входные данные</param>
     /// <response code="200">Запрос выполнен успешно</response>
-    /// <response code="404">Точка не была найдена</response>
+    /// <response code="404">Комментарий не был найден</response>
     /// <response code="500">Внутренняя ошибка сервера</response>
     [HttpPut]
     [SwaggerResponse(statusCode: StatusCodes.Status200OK, type: null)]
     [SwaggerResponse(statusCode: StatusCodes.Status404NotFound, type: typeof(ErrorModel))]
     [SwaggerResponse(statusCode: StatusCodes.Status500InternalServerError, type: typeof(ErrorModel))]
-    public async Task<IActionResult> EditAsync([FromBody] EditPointDto dto)
+    public async Task<IActionResult> EditAsync([FromBody] EditCommentDto dto)
     {
-        await _pointRepository.EditAsync(dto);
+        await _commentRepository.EditCommentAsync(dto);
 
         return Ok();
     }
 
     /// <summary>
-    /// Удалить точку
+    /// Удалить комментарий
     /// </summary>
-    /// <param name="pointId">Идентификатор точки</param>
+    /// <param name="commentId">Идентификатор комментария</param>
     /// <response code="200">Запрос выполнен успешно</response>
-    /// <response code="404">Точка не была найдена</response>
+    /// <response code="404">Комментарий не был найден</response>
     /// <response code="500">Внутренняя ошибка сервера</response>
-    [HttpDelete("{pointId:int}")]
+    [HttpDelete("{commentId:int}")]
     [SwaggerResponse(statusCode: StatusCodes.Status200OK, type: null)]
     [SwaggerResponse(statusCode: StatusCodes.Status404NotFound, type: typeof(ErrorModel))]
     [SwaggerResponse(statusCode: StatusCodes.Status500InternalServerError, type: typeof(ErrorModel))]
-    public async Task<IActionResult> RemoveAsync(int pointId)
+    public async Task<IActionResult> RemoveAsync(int commentId)
     {
-        await _pointRepository.RemoveAsync(pointId);
+        await _commentRepository.RemoveCommentAsync(commentId);
 
         return Ok();
     }

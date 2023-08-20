@@ -18,6 +18,7 @@ public static class DependencyInjection
     public static IServiceCollection AddApplication(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddTransient<IPointRepository, PointRepository>();
+        serviceCollection.AddTransient<ICommentRepository, CommentRepository>();
         serviceCollection.AddAutoMapper(Assembly.GetExecutingAssembly());
         
         return serviceCollection;

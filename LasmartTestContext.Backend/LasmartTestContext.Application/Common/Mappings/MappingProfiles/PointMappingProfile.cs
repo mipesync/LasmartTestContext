@@ -12,8 +12,7 @@ public class PointMappingProfile : Profile
 {
     public PointMappingProfile()
     {
-        CreateMap<Point, PointLookupDto>(MemberList.Source)
-            .ForMember(dto => dto.Comments, opt => opt.Ignore());
+        CreateMap<Point, PointLookupDto>(MemberList.Source);
 
         CreateMap<AddPointDto, Point>(MemberList.Source);
 

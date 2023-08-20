@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using LasmartTestContext.Application.Common.Exceptions;
 using LasmartTestContext.Application.Interfaces;
 using LasmartTestContext.Application.Interfaces.Repositories;
@@ -79,17 +78,19 @@ public class PointRepository : IPointRepository
 
         if (points != null)
         {
-            foreach (var mappedPoint in points.Select(point => _mapper.Map<PointLookupDto>(point)))
+            foreach (var point in points)
             {
-                if (mappedPoint.Comments.Count() != 0)
+                var mappedPoint = _mapper.Map<PointLookupDto>(point);
+
+                if (point.Comments != null)
                 {
-                    foreach (var mappedPointComment in mappedPoint.Comments)
+                    foreach (var pointComment in point.Comments)
                     {
-                        mappedPoint.Comments.Add(_mapper.Map<CommentLookupDto>(mappedPointComment));
+                        mappedPoint.Comments.Add(_mapper.Map<CommentLookupDto>(pointComment));
                     }
                 }
                 
-                result.Points!.Add(mappedPoint);
+                result.Points.Add(mappedPoint);
             }
         }
 
