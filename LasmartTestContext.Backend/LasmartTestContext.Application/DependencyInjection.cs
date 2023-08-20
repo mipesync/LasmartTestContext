@@ -1,4 +1,5 @@
-﻿using LasmartTestContext.Application.Common.Repositories;
+﻿using System.Reflection;
+using LasmartTestContext.Application.Common.Repositories;
 using LasmartTestContext.Application.Interfaces.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,7 +17,8 @@ public static class DependencyInjection
     /// <returns>Обновлённый сервис коллекций</returns>
     public static IServiceCollection AddApplication(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddScoped<IPointRepository, PointRepository>();
+        serviceCollection.AddTransient<IPointRepository, PointRepository>();
+        serviceCollection.AddAutoMapper(Assembly.GetExecutingAssembly());
         
         return serviceCollection;
     }
