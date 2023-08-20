@@ -1,14 +1,7 @@
-﻿namespace LasmartTestContext.Domain;
+﻿namespace LasmartTestContext.Dto.PointDto;
 
-/// <summary>
-/// Класс точки, отображаемой на доске
-/// </summary>
-public class Point
+public class BasePointDto
 {
-    /// <summary>
-    /// Идентификатор точки
-    /// </summary>
-    public int Id { get; set; }
     /// <summary>
     /// Положение точки по X
     /// </summary>
@@ -25,9 +18,4 @@ public class Point
     /// Цвет точки в формате hex
     /// </summary>
     public string? Color { get; set; }
-    
-    /// <summary>
-    /// Список комментариев под точкой
-    /// </summary>
-    public List<Comment>? Comments { get; set; }
 }

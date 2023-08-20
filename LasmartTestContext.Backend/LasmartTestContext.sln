@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LasmartTestContext.Applicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LasmartTestContext.Persistence", "LasmartTestContext.Persistence\LasmartTestContext.Persistence.csproj", "{88A0F19B-15DD-44DD-9EC2-CEB919F621CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LasmartTestContext.Dto", "LasmartTestContext.Dto\LasmartTestContext.Dto.csproj", "{F1E16323-62C6-4281-A3E1-630F72FBFE6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{88A0F19B-15DD-44DD-9EC2-CEB919F621CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88A0F19B-15DD-44DD-9EC2-CEB919F621CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88A0F19B-15DD-44DD-9EC2-CEB919F621CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1E16323-62C6-4281-A3E1-630F72FBFE6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1E16323-62C6-4281-A3E1-630F72FBFE6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1E16323-62C6-4281-A3E1-630F72FBFE6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1E16323-62C6-4281-A3E1-630F72FBFE6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

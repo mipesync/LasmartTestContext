@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LasmartTestContext.Domain\LasmartTestContext.Domain.csproj" />
+    <ProjectReference Include="..\LasmartTestContext.Dto\LasmartTestContext.Dto.csproj" />
   </ItemGroup>
 
 </Project>
