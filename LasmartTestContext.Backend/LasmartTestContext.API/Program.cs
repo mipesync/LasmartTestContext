@@ -1,3 +1,4 @@
+using LasmartTestContext.API.Middlewares.ExceptionMiddleware;
 using LasmartTestContext.Application;
 using LasmartTestContext.Persistence;
 
@@ -19,6 +20,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionMiddleware();
 
 app.UseHttpsRedirection();
 
