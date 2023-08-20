@@ -11,11 +11,11 @@ public interface IDBContext
     /// <summary>
     /// Получить / установить список точек
     /// </summary>
-    DbSet<Point>? Points { get; set; } 
+    DbSet<Point> Points { get; set; } 
     /// <summary>
     /// Получить / установить список комментариев
     /// </summary>
-    DbSet<Comment>? Comments { get; set; }
+    DbSet<Comment> Comments { get; set; }
 
     /// <summary>
     /// Ассинхронно сохраняет внесённые изменения

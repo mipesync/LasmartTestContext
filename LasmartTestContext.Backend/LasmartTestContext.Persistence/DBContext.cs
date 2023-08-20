@@ -13,9 +13,9 @@ public class DBContext : DbContext, IDBContext
     /// </summary>
     /// <param name="options">Настройки</param>
     public DBContext(DbContextOptions<DBContext> options): base(options) { }
-    
-    public DbSet<Point>? Points { get; set; }
-    public DbSet<Comment>? Comments { get; set; }
+
+    public DbSet<Point> Points { get; set; } = null!;
+    public DbSet<Comment> Comments { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
