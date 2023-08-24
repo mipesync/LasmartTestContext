@@ -1,4 +1,5 @@
 using LasmartTestContext.API.Middlewares.ExceptionMiddleware;
+using LasmartTestContext.API.Services;
 using LasmartTestContext.Application;
 using LasmartTestContext.Persistence;
 
@@ -12,8 +13,18 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerService();
+
+builder.Services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder =>
+{
+    builder.AllowAnyHeader();
+    builder.AllowAnyMethod();
+    builder.AllowAnyOrigin();
+}));
 
 var app = builder.Build();
+
+app.UseCors("AllowAllOrigins");
 
 if (app.Environment.IsDevelopment())
 {

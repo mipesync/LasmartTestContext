@@ -11,7 +11,7 @@ namespace LasmartTestContext.API.Controllers;
 /// Контроллер точек
 /// </summary>
 [ApiController]
-[Route("products")]
+[Route("points")]
 [Produces("application/json")]
 public class PointsController : Controller
 {
